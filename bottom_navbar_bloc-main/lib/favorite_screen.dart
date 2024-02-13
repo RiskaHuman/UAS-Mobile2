@@ -7,7 +7,7 @@ class FavoriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("My Favorite"),
+        title: const Text("My Favorit"),
         backgroundColor: Colors.green,
       ),
       body: GridView.count(
