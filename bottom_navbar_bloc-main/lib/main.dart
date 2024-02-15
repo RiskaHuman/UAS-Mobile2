@@ -1,24 +1,39 @@
-import 'package:bottom_navbar/main/bloc/main_bloc.dart';
-import 'package:bottom_navbar/main/main_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:bottom_navbar/main_screen.dart';
+import 'package:bottom_navbar/data/datasource/remote_datasource.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bottom_navbar/pages/bloc/item_bloc.dart';
+import 'package:bottom_navbar/pages/list_alat.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MainBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ItemBloc>(
+          create: (_) => ItemBloc(remoteDataSource: RemoteDataSource()),
+        ),
+        // Tambahkan BlocProvider lain jika diperlukan
+      ],
       child: MaterialApp(
-        title: 'Canzone',
+        title: 'MYHOME',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          primaryColor: Color.fromARGB(255, 58, 179, 183),
+          primarySwatch: Colors.green,
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            primary: Color.fromARGB(255, 58, 179, 183),
+            secondary: Color.fromARGB(255, 58, 179, 183),
+            background: Color(0xFFFFFFFF),
+            onPrimary: Colors.white,
+            onSecondary: Colors.white,
+            onBackground: Color.fromARGB(255, 96, 87, 87),
+          ),
           useMaterial3: true,
         ),
         home: const MainScreen(),
@@ -27,8 +42,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// Tidak perlu mengubah bagian ini
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -49,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(widget.title),
       ),
       body: Center(
@@ -61,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headline6,
             ),
           ],
         ),
@@ -74,3 +90,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+

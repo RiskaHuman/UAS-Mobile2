@@ -8,7 +8,7 @@ class TrendScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Hot Topics"),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.cyan,
       ),
       body: SingleChildScrollView(
         child: Column(

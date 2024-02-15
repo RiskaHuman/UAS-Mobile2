@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("K-Pop Agency"),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.cyan,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                   return Card(
                     child: ListTile(
                       leading: Image.network(
-                        'https://starsgab.com/wp-content/uploads/2020/01/67445543_1244132869124615_1037093589629701700_n1.jpg',
+                        'https://i.pinimg.com/originals/fc/98/57/fc98576b91aacba7cddfc1d41dd753b5.jpg',
                         width: 50, // Sesuaikan ukuran gambar sesuai kebutuhan
                         height: 50,
                         fit: BoxFit.cover,
@@ -62,27 +62,39 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, // Ubah jumlah kolom sesuai kebutuhan
-                  mainAxisSpacing: 8.0,
-                  crossAxisSpacing: 8.0,
-                  childAspectRatio: 1.0, // Proporsi lebar-ke-tinggi item
-                ),
-                itemCount: 20, // Ubah jumlah item sesuai kebutuhan
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: Center(
-                      child: Text(
-                        'Artis K-Pop ${index + 1}',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ),
-                  );
-                },
+Expanded(
+  child: GridView.builder(
+    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: 2, // Ubah jumlah kolom sesuai kebutuhan
+      mainAxisSpacing: 8.0,
+      crossAxisSpacing: 8.0,
+      childAspectRatio: 1.0, // Proporsi lebar-ke-tinggi item
+    ),
+    itemCount: 20, // Ubah jumlah item sesuai kebutuhan
+    itemBuilder: (context, index) {
+      return Card(
+        child: Column(
+          children: [
+            Image.network(
+              'https://0.soompi.io/wp-content/uploads/2017/07/11180529/Chanyeol-6.jpg', // Ganti dengan URL gambar artis yang sesuai
+              width: 100, // Sesuaikan ukuran gambar sesuai kebutuhan
+              height: 100,
+              fit: BoxFit.cover,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Artis K-Pop ${index + 1}',
+                style: TextStyle(fontSize: 16),
               ),
             ),
+          ],
+        ),
+      );
+    },
+  ),
+),
+
           ],
         ),
       ),
@@ -124,7 +136,7 @@ class GroupDetailScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.network('URL_GAMBAR_GRUP'),
+            child: Image.network('https://i.pinimg.com/originals/fc/98/57/fc98576b91aacba7cddfc1d41dd753b5.jpg'),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
